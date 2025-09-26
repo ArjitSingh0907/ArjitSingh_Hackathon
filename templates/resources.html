@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Resources | CODE QUEST</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f2027;
+      color: #e0f7fa;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      color: #00ffff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    header a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header a:hover {
+      color: #00cccc;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    #resources-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .course-item {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .course-item:hover {
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .course-item h2 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #00ffff;
+    }
+
+    .course-item h4 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #80deea;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.1);
+      margin-bottom: 10px;
+    }
+
+    .course-progress-bar {
+      width: 100%;
+      height: 20px;
+      background: #1c1f26;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+      box-shadow: inset 0 0 6px rgba(0,255,255,0.2);
+    }
+
+    .course-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #00ffff;
+      text-align: center;
+      color: #000;
+      font-weight: bold;
+      line-height: 20px;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <header>
+    <h1>Learning Resources</h1>
+    <a href="index.html">⬅ Back to Career Mapper</a>
+  </header>
+
+  <main>
+    <div id="resources-container"></div>
+  </main>
+
+  <script>
+    const courses = [
+      {
+        title: "Intro to Data Science",
+        videos: [
+          { title: "Python Basics", url: "sample.mp4" },
+          { title: "Statistics Basics", url: "sample.mp4" }
+        ]
+      },
+      {
+        title: "Frontend Basics",
+        videos: [
+          { title: "HTML Tutorial", url: "sample.mp4" },
+          { title: "CSS Tutorial", url: "sample.mp4" }
+        ]
+      }
+    ];
+
+    function renderCourses() {
+      const container = document.getElementById("resources-container");
+
+      courses.forEach((course, courseIndex) => {
+        const courseDiv = document.createElement("div");
+        courseDiv.classList.add("course-item");
+
+        let videoHTML = "";
+        course.videos.forEach((v, vidIndex) => {
+          videoHTML += `
+            <h4>${v.title}</h4>
+            <video id="video-${courseIndex}-${vidIndex}" controls>
+              <source src="${v.url}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          `;
+        });
+
+        courseDiv.innerHTML = `
+          <h2>${course.title}</h2>
+          ${videoHTML}
+          <div class="course-progress-bar">
+            <div class="course-progress-fill" id="course-progress-${courseIndex}">0%</div>
+          </div>
+        `;
+
+        container.appendChild(courseDiv);
+
+        const totalVideos = course.videos.length;
+        const videoElements = course.videos.map((_, idx) =>
+          courseDiv.querySelector(`#video-${courseIndex}-${idx}`)
+        );
+
+        videoElements.forEach((video, idx) => {
+          video.addEventListener("timeupdate", () => {
+            let totalPercent = 0;
+            videoElements.forEach(vEl => {
+              if (vEl.duration) {
+                totalPercent += Math.min((vEl.currentTime / vEl.duration) * 100, 100);
+              }
+            });
+            const avgPercent = totalPercent / totalVideos;
+            const progressFill = courseDiv.querySelector(`#course-progress-${courseIndex}`);
+            progressFill.style.width = avgPercent + "%";
+            progressFill.textContent = Math.round(avgPercent) + "%";
+          });
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCourses);
+
+    // Particle background
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let mouse = { x: null, y: null };
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 1.2,
+        dy: (Math.random() - 0.5) * 1.2,
+        glow: Math.random() * 10 + 10
+      });
+    }
+
+    window.addEventListener("mousemove", function(e) {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,255,255,0.8)`;
+        ctx.shadowColor = "#00ffff";
+        ctx.shadowBlur = p.glow;
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+        if (mouse.x && mouse.y) {
+          let dx = p.x - mouse.x;
+          let dy = p.y - mouse.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            p.x += dx / dist * 0.5;
+            p.y += dy / dist * 0.5;
+          }
+        }
+      });
+      requestAnimationFrame(drawParticles);
+    }
+
+    drawParticles();
+  </script>
+</body>
+</html>

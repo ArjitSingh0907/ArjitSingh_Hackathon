@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C Language Syntax Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+    h1 { text-align: center; }
+    .question { margin-bottom: 20px; padding: 10px; background-color: #fff; border-radius: 8px; }
+    textarea { width: 100%; height: 60px; font-family: monospace; }
+    .action-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px;
+    }
+    button.check-btn {
+      background-color: #4CAF50; color: white; border: none;
+      padding: 8px 16px; cursor: pointer; border-radius: 4px;
+    }
+    .points {
+      font-weight: bold; font-size: 16px;
+    }
+    .result, .retry {
+      margin-top: 5px; font-weight: bold;
+    }
+    .retry { color: red; }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+        }
+  </style>
+</head>
+<body>
+  <h1>C Language Syntax Test</h1>
+  <div class="container">
+  <form id="testForm">
+    <!-- Questions will be inserted here -->
+  </form>
+</div>
+
+  <form id="testForm">
+    <!-- Questions will be inserted here -->
+  </form>
+
+  <script>
+    const questions = [
+      { q: 'Write a printf statement to print "Hello, World!"', answer: 'printf("Hello, World!");' },
+      { q: 'Write a scanf statement to take an integer input into variable x', answer: 'scanf("%d", &x);' },
+      { q: 'Write a printf statement to print the value of variable age', answer: 'printf("%d", age);' },
+      { q: 'Write a printf statement to print a newline character', answer: 'printf("\\n");' },
+      { q: 'Write a scanf statement to take a float input into variable price', answer: 'scanf("%f", &price);' },
+      { q: 'Write a printf statement to print "C is fun!"', answer: 'printf("C is fun!");' },
+      { q: 'Write a printf statement to print the value of variable score with 2 decimal places', answer: 'printf("%.2f", score);' },
+      { q: 'Write a scanf statement to take a character input into variable ch', answer: 'scanf("%c", &ch);' },
+      { q: 'Write a printf statement to print tab space between two words', answer: 'printf("word1\\tword2");' },
+      { q: 'Write a printf statement to print the value of variable marks as an integer', answer: 'printf("%d", marks);' }
+    ];
+
+    const form = document.getElementById("testForm");
+
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <p>${index + 1}. ${item.q}</p>
+        <textarea id="q${index}"></textarea>
+        <div class="action-row">
+          <button type="button" class="check-btn" onclick="checkAnswer(${index})">Check</button>
+          <div id="points${index}" class="points"></div>
+        </div>
+        <div id="result${index}" class="result"></div>
+        <div id="retry${index}" class="retry"></div>
+      `;
+      form.appendChild(div);
+    });
+
+    function checkAnswer(index) {
+        const textarea = document.getElementById(`q${index}`);
+        const userInput = textarea.value.trim();
+        const correctAnswer = questions[index].answer.trim();
+        const resultDiv = document.getElementById(`result${index}`);
+        const pointsDiv = document.getElementById(`points${index}`);
+        const retryDiv = document.getElementById(`retry${index}`);
+        const scoreDisplay = document.getElementById("totalScore");
+
+        if (userInput === "") {
+            textarea.style.border = "2px solid red";
+            resultDiv.textContent = "";
+            pointsDiv.textContent = "";
+            retryDiv.textContent = "";
+            return;
+        }
+
+        textarea.style.border = "1px solid #ccc";
+
+        if (userInput === correctAnswer) {
+            resultDiv.textContent = "✅ Correct!";
+            resultDiv.style.color = "green";
+            pointsDiv.textContent = "+5 points";
+            pointsDiv.style.color = "green";
+            retryDiv.textContent = "";
+
+            if (scoreMap[index] === 0) {
+            totalScore += 5;
+            scoreMap[index] = 5;
+            }
+        } else {
+            resultDiv.textContent = "❌ Incorrect, Try Again!";
+            resultDiv.style.color = "red";
+            pointsDiv.textContent = "0 points";
+            pointsDiv.style.color = "red";
+
+            if (scoreMap[index] === 5) {
+            totalScore -= 5;
+            scoreMap[index] = 0;
+            }
+        }
+
+    }
+
+  </script>
+</body>
+</html>

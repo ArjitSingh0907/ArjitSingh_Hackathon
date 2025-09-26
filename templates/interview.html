@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Byte the Interview | CODE QUEST</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      perspective: 1px;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150vh;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      transform: translateZ(-1px) scale(2);
+      z-index: -2;
+    }
+
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transition: background-position 0.1s ease;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 40px;
+      color: #00ffff;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .box-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .info-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 25px 30px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .info-box:hover {
+      transform: translateY(-5px);
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .info-box h2 {
+      color: #00ffff;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .info-box p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .info-box a {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #00ffff;
+      color: #000;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .info-box a:hover {
+      background-color: #00cccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax-bg"></div>
+  <div class="background-overlay"></div>
+
+  <div class="container">
+    <h1>Byte the Interview</h1>
+    <div class="box-wrapper">
+      <div class="info-box">
+        <h2>Hello Interview</h2>
+        <p>Helps software engineer candidates prepare with mock interviews, including FAANG-level scenarios.</p>
+        <a href="https://www.youtube.com/@hello_interview" target="_blank">Visit Channel</a>
+      </div>
+      <div class="info-box">
+        <h2>ByteByteGo</h2>
+        <p>Focuses more on system design, large-scale architecture, and also interview strategies.</p>
+        <a href="https://www.youtube.com/ByteByteGo" target="_blank">Visit Channel</a>
+      </div>
+      <div class="info-box">
+        <h2>NeetCode</h2>
+        <p>Great for coding interview problems, pattern-based solutions, and clear explanations.</p>
+        <a href="https://www.youtube.com/@NeetCode/playlists" target="_blank">Visit Channel</a>
+      </div>
+      <div class="info-box">
+        <h2>Hello Interview (Senior Engineers)</h2>
+        <p>They do mock interviews with senior engineers, offering deeper insights into advanced interview rounds.</p>
+        <a href="https://www.youtube.com/@hello_interview" target="_blank">Visit Channel</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.querySelector('.background-overlay');
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth * 100;
+      const y = e.clientY / window.innerHeight * 100;
+      overlay.style.background = radial-gradient(circle at ${x}% ${y}%, #0f2027, #203a43, #2c5364);
+    });
+  </script>
+</body>
+</html>

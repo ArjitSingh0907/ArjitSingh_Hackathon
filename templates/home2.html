@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore | CODE QUEST</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #e0f7fa;
+      background-color: #0f2027;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 40px;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .box-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .info-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 30px;
+      width: 300px;
+      min-height: 300px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-box:hover {
+      transform: translateY(-10px);
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .info-box h2 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-size: 24px;
+      text-shadow: 0 0 6px #00ffff;
+    }
+
+    .info-box p {
+      font-size: 16px;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .info-box button,
+    .redirect-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 0 8px #00ffff;
+    }
+
+    .info-box button:hover,
+    .redirect-button:hover {
+      background-color: #00cccc;
+      transform: scale(1.05);
+    }
+
+    .info-box button:disabled {
+      background-color: #555;
+      color: #ccc;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div class="container">
+    <h1>Explore Opportunities</h1>
+    <div class="box-wrapper">
+      <div class="info-box">
+        <h2>Job Opportunities</h2>
+        <p>Discover trending tech roles, salary insights, and career paths tailored for developers, designers, and data scientists. With this students can keep a track of what else do they need to study and learn to land on a good MNC company.</p>
+        <a href="/jobs" class="redirect-button">Know More</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Computer Quiz</h2>
+        <p>This will be testing your basic knowledge on both computer software and hardware. Providing deeper knowledge to students if they got that wrong.</p>
+        <a href="/test" class="redirect-button">Attempt Quiz</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Programming Test</h2>
+        <p>Challenge yourself with coding quizzes in Python, JavaScript, C++, and more. Earn badges and track your progress. We will be adding tests for more programming languages soon...</p>
+        <a href="/language" class="redirect-button">Attempt Test</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Byte the Interview</h2>
+        <p>Practice real-world interview questions, get tips from industry experts, and simulate technical rounds with feedback.</p>
+        <a href="/interview" class="redirect-button">Explore Interviews</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Code Lingo</h2>
+        <p>Master the vocabulary of developers. Learn key terms, acronyms, and jargon used across tech teams and documentation.</p>
+        <a href="/codelingo" class="redirect-button">Learn To Code</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Certificate Of Participation</h2>
+        <p>Here We'll be providing certificates to students whose have completed the course.</p>
+        <a href="/certificate" class="redirect-button">Earn</a>
+      </div>
+
+      <div class="info-box">
+        <h2>Coming Soon</h2>
+        <p>This space is reserved for future features. Stay tuned for exciting updates and new tools to boost your coding journey!</p>
+        <button disabled>Coming Soon</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let mouse = { x: null, y: null };
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 1.2,
+        dy: (Math.random() - 0.5) * 1.2,
+        glow: Math.random() * 10 + 10
+      });
+    }
+
+    window.addEventListener("mousemove", function(e) {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,255,255,0.8)`;
+        ctx.shadowColor = "#00ffff";
+        ctx.shadowBlur = p.glow;
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+        if (mouse.x && mouse.y) {
+          let dx = p.x - mouse.x;
+          let dy = p.y - mouse.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            p.x += dx / dist * 0.5;
+            p.y += dy / dist * 0.5;
+          }
+        }
+      });
+      requestAnimationFrame(drawParticles);
+    }
+
+    drawParticles();
+  </script>
+</body>
+</html>

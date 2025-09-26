@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C Hard Level Syntax Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    h1 { text-align: center; margin-top: 20px; }
+    .question { margin-bottom: 30px; padding: 15px; background-color: #fff; border-radius: 8px; }
+    textarea {
+      width: 100%; height: 200px; font-family: monospace; font-size: 14px;
+      border: 1px solid #ccc; border-radius: 4px;
+    }
+    .action-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px;
+    }
+    button.check-btn {
+      background-color: #4CAF50; color: white; border: none;
+      padding: 8px 16px; cursor: pointer; border-radius: 4px;
+    }
+    .points { font-weight: bold; font-size: 16px; }
+    .result, .retry {
+      margin-top: 5px; font-weight: bold;
+    }
+    .retry { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>C Hard-Level Syntax Test</h1>
+    <form id="testForm"></form>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: 'Write a complete C program to check whether a number is even or odd.',
+        answer: `#include <stdio.h>\nint main() {\n    int n;\n    scanf("%d", &n);\n    if(n % 2 == 0)\n        printf("Even");\n    else\n        printf("Odd");\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print the first 10 natural numbers using a loop.',
+        answer: `#include <stdio.h>\nint main() {\n    for(int i = 1; i <= 10; i++)\n        printf("%d\\n", i);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to calculate the factorial of a number.',
+        answer: `#include <stdio.h>\nint main() {\n    int n, f = 1;\n    scanf("%d", &n);\n    for(int i = 1; i <= n; i++)\n        f *= i;\n    printf("%d", f);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to reverse an integer array of size 5.',
+        answer: `#include <stdio.h>\nint main() {\n    int a[5];\n    for(int i = 0; i < 5; i++)\n        scanf("%d", &a[i]);\n    for(int i = 4; i >= 0; i--)\n        printf("%d ", a[i]);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to find the largest of three numbers.',
+        answer: `#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf("%d %d %d", &a, &b, &c);\n    int max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);\n    printf("%d", max);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print the sum of elements in an array of size 5.',
+        answer: `#include <stdio.h>\nint main() {\n    int a[5], sum = 0;\n    for(int i = 0; i < 5; i++) {\n        scanf("%d", &a[i]);\n        sum += a[i];\n    }\n    printf("%d", sum);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print all even numbers from 1 to 20.',
+        answer: `#include <stdio.h>\nint main() {\n    for(int i = 1; i <= 20; i++) {\n        if(i % 2 == 0)\n            printf("%d\\n", i);\n    }\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to swap two numbers using a temporary variable.',
+        answer: `#include <stdio.h>\nint main() {\n    int a, b, temp;\n    scanf("%d %d", &a, &b);\n    temp = a;\n    a = b;\n    b = temp;\n    printf("%d %d", a, b);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to check if a number is positive, negative or zero.',
+        answer: `#include <stdio.h>\nint main() {\n    int n;\n    scanf("%d", &n);\n    if(n > 0)\n        printf("Positive");\n    else if(n < 0)\n        printf("Negative");\n    else\n        printf("Zero");\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print the ASCII value of a character.',
+        answer: `#include <stdio.h>\nint main() {\n    char ch;\n    scanf("%c", &ch);\n    printf("%d", ch);\n    return 0;\n}`
+      }
+    ];
+
+    const form = document.getElementById("testForm");
+
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <p>${index + 1}. ${item.q}</p>
+        <textarea id="q${index}"></textarea>
+        <div class="action-row">
+          <button type="button" class="check-btn" onclick="checkAnswer(${index})">Check</button>
+          <div id="points${index}" class="points"></div>
+        </div>
+        <div id="result${index}" class="result"></div>
+        <div id="retry${index}" class="retry"></div>
+      `;
+      form.appendChild(div);
+    });
+
+    function checkAnswer(index) {
+        const textarea = document.getElementById(`q${index}`);
+        const userInput = textarea.value.trim();
+        const correctAnswer = questions[index].answer.trim();
+        const resultDiv = document.getElementById(`result${index}`);
+        const pointsDiv = document.getElementById(`points${index}`);
+        const retryDiv = document.getElementById(`retry${index}`);
+        const scoreDisplay = document.getElementById("totalScore");
+
+        if (userInput === "") {
+            textarea.style.border = "2px solid red";
+            resultDiv.textContent = "";
+            pointsDiv.textContent = "";
+            retryDiv.textContent = "";
+            return;
+        }
+
+        textarea.style.border = "1px solid #ccc";
+
+        if (userInput === correctAnswer) {
+            resultDiv.textContent = "✅ Correct!";
+            resultDiv.style.color = "green";
+            pointsDiv.textContent = "+5 points";
+            pointsDiv.style.color = "green";
+            retryDiv.textContent = "";
+
+            if (scoreMap[index] === 0) {
+            totalScore += 5;
+            scoreMap[index] = 5;
+            }
+        } else {
+            resultDiv.textContent = "❌ Incorrect, Try Again!";
+            resultDiv.style.color = "red";
+            pointsDiv.textContent = "0 points";
+            pointsDiv.style.color = "red";
+            retryDiv.textContent = "Try Again!";
+
+            if (scoreMap[index] === 5) {
+            totalScore -= 5;
+            scoreMap[index] = 0;
+            }
+        }
+
+    scoreDisplay.textContent = `Total Score: ${totalScore} / 50`;
+    }
+  </script>
+</body>
+</html>

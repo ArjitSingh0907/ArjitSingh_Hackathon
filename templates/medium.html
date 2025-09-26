@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C Medium Level Syntax Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+    h1 { text-align: center; }
+    .question { margin-bottom: 30px; padding: 15px; background-color: #fff; border-radius: 8px; }
+    textarea { width: 100%; height: 180px; font-family: monospace; font-size: 14px; }
+    .action-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px;
+    }
+    button.check-btn {
+      background-color: #4CAF50; color: white; border: none;
+      padding: 8px 16px; cursor: pointer; border-radius: 4px;
+    }
+    .points { font-weight: bold; font-size: 16px; }
+    .result, .retry {
+      margin-top: 5px; font-weight: bold;
+    }
+    .retry { color: red; }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>C Medium-Level Syntax Test</h1>
+  <form id="testForm">
+    <!-- Questions will be inserted here -->
+  </form>
+</div>
+
+  <form id="testForm">
+    <!-- Questions will be inserted here -->
+  </form>
+
+  <script>
+    const questions = [
+      {
+        q: 'Write a complete C program to print "Welcome to C!"',
+        answer: `#include <stdio.h>\nint main() {\n    printf("Welcome to C!");\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to take an integer input and print it',
+        answer: `#include <stdio.h>\nint main() {\n    int x;\n    scanf("%d", &x);\n    printf("%d", x);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to add two integers and print the result',
+        answer: `#include <stdio.h>\nint main() {\n    int a, b;\n    scanf("%d %d", &a, &b);\n    printf("%d", a + b);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print the value of a float variable',
+        answer: `#include <stdio.h>\nint main() {\n    float f;\n    scanf("%f", &f);\n    printf("%f", f);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print a character',
+        answer: `#include <stdio.h>\nint main() {\n    char ch;\n    scanf("%c", &ch);\n    printf("%c", ch);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print "Coding is fun!" on a new line',
+        answer: `#include <stdio.h>\nint main() {\n    printf("Coding is fun!\\n");\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to multiply two numbers and print the result',
+        answer: `#include <stdio.h>\nint main() {\n    int x, y;\n    scanf("%d %d", &x, &y);\n    printf("%d", x * y);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print tab-separated values "A" and "B"',
+        answer: `#include <stdio.h>\nint main() {\n    printf("A\\tB");\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to take a string input and print it',
+        answer: `#include <stdio.h>\nint main() {\n    char str[100];\n    scanf("%s", str);\n    printf("%s", str);\n    return 0;\n}`
+      },
+      {
+        q: 'Write a complete C program to print the sum of 5 and 10',
+        answer: `#include <stdio.h>\nint main() {\n    printf("%d", 5 + 10);\n    return 0;\n}`
+      }
+    ];
+
+    const form = document.getElementById("testForm");
+
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <p>${index + 1}. ${item.q}</p>
+        <textarea id="q${index}"></textarea>
+        <div class="action-row">
+          <button type="button" class="check-btn" onclick="checkAnswer(${index})">Check</button>
+          <div id="points${index}" class="points"></div>
+        </div>
+        <div id="result${index}" class="result"></div>
+        <div id="retry${index}" class="retry"></div>
+      `;
+      form.appendChild(div);
+    });
+
+    function checkAnswer(index) {
+    const textarea = document.getElementById(`q${index}`);
+    const userInput = textarea.value.trim();
+    const correctAnswer = questions[index].answer.trim();
+    const resultDiv = document.getElementById(`result${index}`);
+    const pointsDiv = document.getElementById(`points${index}`);
+    const retryDiv = document.getElementById(`retry${index}`);
+
+    if (userInput === "") {
+        // Just highlight the border in red
+        textarea.style.border = "2px solid red";
+        resultDiv.textContent = "";
+        pointsDiv.textContent = "";
+        retryDiv.textContent = "";
+        return;
+    }
+
+    // Reset border if input is not empty
+    textarea.style.border = "1px solid #ccc";
+
+    if (userInput === correctAnswer) {
+        resultDiv.textContent = "✅ Correct!";
+        resultDiv.style.color = "green";
+        pointsDiv.textContent = "+5 points";
+        pointsDiv.style.color = "green";
+        retryDiv.textContent = "";
+    } else {
+        resultDiv.textContent = "❌ Incorrect, Try Again!";
+        resultDiv.style.color = "red";
+        pointsDiv.textContent = "0 points";
+        pointsDiv.style.color = "red";
+        retryDiv.textContent = "Try Again!";
+    }
+    }
+  </script>
+</body>
+</html>

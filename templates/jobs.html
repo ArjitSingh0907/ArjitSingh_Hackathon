@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore Tech Careers | CODE QUEST</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffff;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    #search {
+      display: block;
+      margin: 0 auto 30px auto;
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    #jobs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .job-card {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .job-card:hover {
+      transform: scale(1.03);
+    }
+
+    .job-card h2 {
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .job-card p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .job-card button {
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .job-card button:hover {
+      background-color: #00cccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Explore Tech Careers</h1>
+  <input type="text" id="search" placeholder="Search jobs or skills...">
+  <div id="jobs-container"></div>
+
+  <script>
+    const jobs = [
+      { title: "Data Scientist", skills: ["Python", "Statistics", "ML", "SQL"], resources: [ { name: "Python for Everybody", url: "https://www.coursera.org/learn/python" } ] },
+      { title: "Frontend Developer", skills: ["HTML", "CSS", "JavaScript", "React"], resources: [ { name: "MDN Web Docs", url: "https://developer.mozilla.org" } ] },
+      { title: "Backend Developer", skills: ["Node.js", "Express", "Databases", "APIs"], resources: [ { name: "Node.js Docs", url: "https://nodejs.org/en/docs/" } ] },
+      { title: "UI/UX Designer", skills: ["Figma", "Design Thinking", "Wireframing", "Prototyping"], resources: [ { name: "Figma Learn", url: "https://help.figma.com/hc/en-us/articles/360040328314-Learn-Design-with-Figma" } ] },
+      { title: "Cybersecurity Analyst", skills: ["Networking", "Linux", "Firewalls", "PenTesting"], resources: [ { name: "TryHackMe", url: "https://tryhackme.com/" } ] },
+      { title: "Cloud Engineer", skills: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes"], resources: [ { name: "AWS Training", url: "https://aws.amazon.com/training/" } ] },
+      { title: "AI/ML Engineer", skills: ["Python", "TensorFlow", "Deep Learning", "NLP"], resources: [ { name: "DeepLearning.AI", url: "https://www.deeplearning.ai/" } ] },
+      { title: "Business Analyst", skills: ["Excel", "SQL", "Power BI", "Data Visualization"], resources: [ { name: "Excel for Everyone", url: "https://www.coursera.org/learn/excel-basics" } ] },
+      { title: "Product Manager", skills: ["Roadmapping", "Agile", "Market Research", "Leadership"], resources: [ { name: "Product School Blog", url: "https://productschool.com/blog/" } ] },
+      { title: "Digital Marketer", skills: ["SEO", "Google Ads", "Content Marketing", "Social Media"], resources: [ { name: "Google Digital Garage", url: "https://learndigital.withgoogle.com/digitalgarage" } ] },
+      { title: "Mobile App Developer", skills: ["Java", "Kotlin", "Swift", "Flutter"], resources: [ { name: "Flutter Docs", url: "https://flutter.dev/docs" } ] },
+      { title: "DevOps Engineer", skills: ["Docker", "Kubernetes", "CI/CD", "AWS"], resources: [ { name: "Docker Docs", url: "https://docs.docker.com/" } ] }
+    ];
+
+    const jobsContainer = document.getElementById("jobs-container");
+
+    function displayJobs(jobList) {
+      jobsContainer.innerHTML = "";
+      jobList.forEach(job => {
+        const jobCard = document.createElement("div");
+        jobCard.classList.add("job-card");
+        jobCard.innerHTML = `
+          <h2>${job.title}</h2>
+          <p><b>Skills:</b> ${job.skills.join(", ")}</p>
+          <button onclick="viewResources('${encodeURIComponent(job.title)}')">View Resources</button>
+        `;
+        jobsContainer.appendChild(jobCard);
+      });
+    }
+
+    function viewResources(jobTitle) {
+      alert("Redirecting to resources for: " + decodeURIComponent(jobTitle));
+      // Replace with actual resource page if needed
+      // window.location.href = `resources.html?job=${jobTitle}`;
+    }
+
+    // Initial load
+    displayJobs(jobs);
+
+    // Search filter
+    document.getElementById("search").addEventListener("input", e => {
+      const keyword = e.target.value.toLowerCase();
+      const filtered = jobs.filter(job =>
+        job.title.toLowerCase().includes(keyword) ||
+        job.skills.some(skill => skill.toLowerCase().includes(keyword))
+      );
+      displayJobs(filtered);
+    });
+  </script>
+</body>
+</html>

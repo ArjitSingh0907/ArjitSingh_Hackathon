@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Lingo | Developer Vocabulary</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    p.mission {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #00ffff;
+      padding-bottom: 5px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+
+    .section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #00cccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Code Lingo</h1>
+    <p class="mission">
+      Master the vocabulary of developers. Learn key terms, acronyms, and jargon used across tech teams and documentation.
+    </p>
+
+    <div class="section">
+        <h2>Essential Programming Languages</h2>
+        <ul>
+            <li><b>C</b>: A foundational procedural language known for speed and low-level memory access. Used in system programming, embedded systems, and operating systems.</li>
+            <li><b>C++</b>: An extension of C with object-oriented features. Widely used in game development, high-performance applications, and competitive programming.</li>
+            <li><b>Python</b>: A high-level, readable language popular for data science, automation, web development, and AI/ML. Known for its vast ecosystem and beginner-friendly syntax.</li>
+            <li><b>Java</b>: A class-based, object-oriented language used in enterprise applications, Android development, and backend systems. Runs on the JVM (Java Virtual Machine).</li>
+            <li><b>Go (Golang)</b>: Developed by Google, known for simplicity, concurrency support, and performance. Ideal for cloud services, APIs, and scalable systems.</li>
+            <li><b>JavaScript</b>: The language of the web. Powers dynamic frontend behavior and, with Node.js, backend services too. Core to modern web development.</li>
+            <li><b>SQL</b>: Structured Query Language used to interact with relational databases. Essential for data retrieval, manipulation, and reporting.</li>
+            <li><b>Bash</b>: A Unix shell scripting language used for automating tasks, managing servers, and writing command-line utilities.</li>
+        </ul>
+      <h2>Core Programming Concepts</h2>
+      <ul>
+        <li><b>Syntax & Semantics</b>: Rules and meaning behind code.</li>
+        <li><b>Data Types</b>: int, float, char, boolean, arrays, objects.</li>
+        <li><b>Control Structures</b>: if/else, loops, switch, break.</li>
+        <li><b>Functions</b>: Reusable blocks with parameters and return values.</li>
+        <li><b>OOP</b>: Classes, objects, inheritance, polymorphism.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Software Engineering Essentials</h2>
+      <ul>
+        <li><b>SDLC</b>: Requirements → Design → Implementation → Testing → Deployment → Maintenance.</li>
+        <li><b>Testing</b>: Unit, Integration, System, Regression.</li>
+        <li><b>Design Principles</b>: Modularity, Abstraction, Reusability, Maintainability.</li>
+        <li><b>Design Patterns</b>: Singleton, Factory, Observer, MVC.</li>
+        <li><b>Version Control</b>: Git, GitHub, commit, push, pull, merge.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Web & Software Technologies</h2>
+      <ul>
+        <li><b>Frontend</b>: HTML, CSS, JavaScript, React, DevTools.</li>
+        <li><b>Backend</b>: Python, Java, Node.js, Django, Express.</li>
+        <li><b>Databases</b>: MySQL, PostgreSQL, MongoDB.</li>
+        <li><b>DevOps</b>: CI/CD, Docker, Kubernetes, AWS, Azure.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+  <h2>System-Defined Functions in C</h2>
+  <ul>
+    <li><b>stdio.h</b> – Standard Input/Output:
+      <ul>
+        <li><code>printf()</code> – Prints formatted output to the console</li>
+        <li><code>scanf()</code> – Reads formatted input from the user</li>
+        <li><code>gets()</code>, <code>puts()</code> – Read/write strings (deprecated: use <code>fgets()</code>)</li>
+        <li><code>fopen()</code>, <code>fclose()</code> – Open/close files</li>
+        <li><code>fread()</code>, <code>fwrite()</code> – Read/write binary data</li>
+        <li><code>fprintf()</code>, <code>fscanf()</code> – File-based formatted I/O</li>
+      </ul>
+    </li>
+
+    <li><b>stdlib.h</b> – General Utilities:
+      <ul>
+        <li><code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code> – Dynamic memory allocation</li>
+        <li><code>free()</code> – Deallocates memory</li>
+        <li><code>exit()</code> – Terminates the program</li>
+        <li><code>atoi()</code>, <code>atof()</code>, <code>strtol()</code> – Convert strings to numbers</li>
+        <li><code>rand()</code>, <code>srand()</code> – Generate random numbers</li>
+        <li><code>system()</code> – Executes shell commands</li>
+      </ul>
+    </li>
+
+    <li><b>string.h</b> – String Manipulation:
+      <ul>
+        <li><code>strlen()</code> – Returns length of a string</li>
+        <li><code>strcpy()</code>, <code>strncpy()</code> – Copy strings</li>
+        <li><code>strcat()</code>, <code>strncat()</code> – Concatenate strings</li>
+        <li><code>strcmp()</code>, <code>strncmp()</code> – Compare strings</li>
+        <li><code>strchr()</code>, <code>strstr()</code> – Search within strings</li>
+        <li><code>memset()</code>, <code>memcpy()</code> – Memory operations</li>
+      </ul>
+    </li>
+
+    <li><b>math.h</b> – Mathematical Functions:
+      <ul>
+        <li><code>pow()</code>, <code>sqrt()</code> – Power and square root</li>
+        <li><code>sin()</code>, <code>cos()</code>, <code>tan()</code> – Trigonometric functions</li>
+        <li><code>log()</code>, <code>exp()</code> – Logarithmic and exponential</li>
+        <li><code>ceil()</code>, <code>floor()</code>, <code>fabs()</code> – Rounding and absolute value</li>
+      </ul>
+    </li>
+
+    <li><b>time.h</b> – Time and Date:
+      <ul>
+        <li><code>time()</code> – Returns current time</li>
+        <li><code>clock()</code> – Processor time used</li>
+        <li><code>difftime()</code> – Difference between two times</li>
+        <li><code>strftime()</code> – Format time as string</li>
+      </ul>
+    </li>
+
+    <li><b>ctype.h</b> – Character Handling:
+      <ul>
+        <li><code>isalpha()</code>, <code>isdigit()</code>, <code>isalnum()</code> – Character checks</li>
+        <li><code>toupper()</code>, <code>tolower()</code> – Case conversion</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    <div class="section">
+      <h2>Security & Best Practices</h2>
+      <ul>
+        <li><b>Authentication vs Authorization</b>: Identity vs access control.</li>
+        <li><b>Encryption & Hashing</b>: Protecting data and passwords.</li>
+        <li><b>Secure Coding</b>: Input validation, avoiding SQL injection.</li>
+        <li><b>Firewalls & PenTesting</b>: Network protection and vulnerability testing.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+  <h2>System-Defined Functions in Java</h2>
+  <ul>
+    <li><b>System Class</b> (java.lang.System):
+      <ul>
+        <li><code>System.out.println()</code> – Print output to console</li>
+        <li><code>System.in.read()</code> – Read input from console</li>
+        <li><code>System.currentTimeMillis()</code> – Get current time in milliseconds</li>
+        <li><code>System.exit()</code> – Terminate the program</li>
+      </ul>
+    </li>
+
+    <li><b>Math Class</b> (java.lang.Math):
+      <ul>
+        <li><code>Math.pow()</code>, <code>Math.sqrt()</code> – Power and square root</li>
+        <li><code>Math.abs()</code>, <code>Math.max()</code>, <code>Math.min()</code> – Absolute and comparisons</li>
+        <li><code>Math.sin()</code>, <code>Math.cos()</code>, <code>Math.tan()</code> – Trigonometric functions</li>
+        <li><code>Math.random()</code> – Generate random number between 0.0 and 1.0</li>
+      </ul>
+    </li>
+
+    <li><b>String Class</b> (java.lang.String):
+      <ul>
+        <li><code>length()</code> – Returns string length</li>
+        <li><code>charAt()</code> – Access character at index</li>
+        <li><code>substring()</code> – Extract substring</li>
+        <li><code>indexOf()</code>, <code>lastIndexOf()</code> – Search within string</li>
+        <li><code>toUpperCase()</code>, <code>toLowerCase()</code> – Case conversion</li>
+        <li><code>equals()</code>, <code>equalsIgnoreCase()</code> – Compare strings</li>
+        <li><code>trim()</code>, <code>replace()</code>, <code>split()</code> – Modify strings</li>
+      </ul>
+    </li>
+
+    <li><b>Arrays Class</b> (java.util.Arrays):
+      <ul>
+        <li><code>sort()</code> – Sort array</li>
+        <li><code>copyOf()</code>, <code>copyOfRange()</code> – Copy arrays</li>
+        <li><code>fill()</code> – Fill array with value</li>
+        <li><code>equals()</code> – Compare arrays</li>
+        <li><code>toString()</code> – Convert array to string</li>
+      </ul>
+    </li>
+
+    <li><b>Collections Class</b> (java.util.Collections):
+      <ul>
+        <li><code>sort()</code> – Sort list</li>
+        <li><code>reverse()</code> – Reverse list</li>
+        <li><code>shuffle()</code> – Randomize list order</li>
+        <li><code>max()</code>, <code>min()</code> – Find max/min in collection</li>
+      </ul>
+    </li>
+
+    <li><b>Scanner Class</b> (java.util.Scanner):
+      <ul>
+        <li><code>nextLine()</code>, <code>nextInt()</code>, <code>nextDouble()</code> – Read user input</li>
+        <li><code>hasNext()</code> – Check for more input</li>
+        <li><code>close()</code> – Close scanner</li>
+      </ul>
+    </li>
+
+    <li><b>File Class</b> (java.io.File):
+      <ul>
+        <li><code>exists()</code>, <code>createNewFile()</code> – Check/create file</li>
+        <li><code>delete()</code> – Delete file</li>
+        <li><code>length()</code> – Get file size</li>
+        <li><code>getName()</code>, <code>getPath()</code> – File info</li>
+      </ul>
+    </li>
+
+    <li><b>Thread Class</b> (java.lang.Thread):
+      <ul>
+        <li><code>start()</code> – Begin thread execution</li>
+        <li><code>sleep()</code> – Pause thread</li>
+        <li><code>join()</code> – Wait for thread to finish</li>
+        <li><code>getName()</code>, <code>setName()</code> – Manage thread identity</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    <div class="section">
+      <h2>Career & Collaboration Skills</h2>
+      <ul>
+        <li><b>Agile</b>: Scrum, Kanban, sprints, standups.</li>
+        <li><b>Project Tools</b>: Jira, Trello, Notion.</li>
+        <li><b>Soft Skills</b>: Communication, teamwork, problem-solving.</li>
+        <li><b>Code Reviews</b>: Peer feedback and quality assurance.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+  <h2>System-Defined Functions in Python</h2>
+  <ul>
+    <li><b>Built-in Functions</b> (always available):
+      <ul>
+        <li><code>print()</code> – Display output</li>
+        <li><code>input()</code> – Read user input</li>
+        <li><code>len()</code> – Get length of iterable</li>
+        <li><code>type()</code> – Return type of object</li>
+        <li><code>range()</code> – Generate sequence of numbers</li>
+        <li><code>int()</code>, <code>float()</code>, <code>str()</code>, <code>bool()</code> – Type conversion</li>
+        <li><code>sum()</code>, <code>max()</code>, <code>min()</code> – Aggregate values</li>
+        <li><code>sorted()</code>, <code>reversed()</code> – Sort or reverse iterables</li>
+        <li><code>enumerate()</code>, <code>zip()</code> – Loop helpers</li>
+        <li><code>map()</code>, <code>filter()</code>, <code>reduce()</code> – Functional programming tools</li>
+        <li><code>eval()</code>, <code>exec()</code> – Execute code dynamically</li>
+        <li><code>help()</code>, <code>dir()</code> – Introspection and documentation</li>
+      </ul>
+    </li>
+
+    <li><b>String Methods</b>:
+      <ul>
+        <li><code>.upper()</code>, <code>.lower()</code>, <code>.title()</code> – Case conversion</li>
+        <li><code>.strip()</code>, <code>.replace()</code>, <code>.split()</code> – Modify strings</li>
+        <li><code>.find()</code>, <code>.count()</code> – Search and count</li>
+        <li><code>.join()</code> – Join list into string</li>
+      </ul>
+    </li>
+
+    <li><b>List Methods</b>:
+      <ul>
+        <li><code>.append()</code>, <code>.extend()</code> – Add elements</li>
+        <li><code>.insert()</code>, <code>.remove()</code>, <code>.pop()</code> – Modify list</li>
+        <li><code>.sort()</code>, <code>.reverse()</code> – Order elements</li>
+        <li><code>.index()</code>, <code>.count()</code> – Search and count</li>
+      </ul>
+    </li>
+
+    <li><b>Dictionary Methods</b>:
+      <ul>
+        <li><code>.get()</code>, <code>.setdefault()</code> – Access keys safely</li>
+        <li><code>.keys()</code>, <code>.values()</code>, <code>.items()</code> – Iterate over dictionary</li>
+        <li><code>.update()</code>, <code>.pop()</code>, <code>.clear()</code> – Modify dictionary</li>
+      </ul>
+    </li>
+
+    <li><b>File I/O</b>:
+      <ul>
+        <li><code>open()</code> – Open a file</li>
+        <li><code>.read()</code>, <code>.readline()</code>, <code>.readlines()</code> – Read content</li>
+        <li><code>.write()</code>, <code>.writelines()</code> – Write content</li>
+        <li><code>.close()</code> – Close file</li>
+        <li><code>with open() as</code> – Context manager for safe file handling</li>
+      </ul>
+    </li>
+
+    <li><b>Math Module</b> (<code>import math</code>):
+      <ul>
+        <li><code>math.sqrt()</code>, <code>math.pow()</code> – Square root and power</li>
+        <li><code>math.sin()</code>, <code>math.cos()</code>, <code>math.tan()</code> – Trigonometry</li>
+        <li><code>math.log()</code>, <code>math.exp()</code> – Logarithmic and exponential</li>
+        <li><code>math.ceil()</code>, <code>math.floor()</code>, <code>math.fabs()</code> – Rounding and absolute</li>
+        <li><code>math.pi</code>, <code>math.e</code> – Constants</li>
+      </ul>
+    </li>
+
+    <li><b>Datetime Module</b> (<code>import datetime</code>):
+      <ul>
+        <li><code>datetime.datetime.now()</code> – Current date and time</li>
+        <li><code>datetime.date.today()</code> – Current date</li>
+        <li><code>datetime.timedelta()</code> – Time difference</li>
+        <li><code>strftime()</code>, <code>strptime()</code> – Format and parse dates</li>
+      </ul>
+    </li>
+
+    <li><b>OS Module</b> (<code>import os</code>):
+      <ul>
+        <li><code>os.getcwd()</code>, <code>os.chdir()</code> – Get/change working directory</li>
+        <li><code>os.listdir()</code> – List files</li>
+        <li><code>os.remove()</code>, <code>os.rename()</code> – File operations</li>
+        <li><code>os.path.exists()</code>, <code>os.path.join()</code> – Path utilities</li>
+      </ul>
+    </li>
+
+    <li><b>Random Module</b> (<code>import random</code>):
+      <ul>
+        <li><code>random.randint()</code>, <code>random.choice()</code> – Random numbers and selections</li>
+        <li><code>random.shuffle()</code>, <code>random.sample()</code> – Randomize lists</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    <div class="section">
+      <h2>Documentation & Communication</h2>
+      <ul>
+        <li><b>README.md</b>: Project overview and setup instructions.</li>
+        <li><b>API Docs</b>: How to use endpoints and parameters.</li>
+        <li><b>Comments</b>: Explain logic and decisions in code.</li>
+        <li><b>Tech Specs</b>: Architecture and design documentation.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>External Resources</h2>
+      <ul>
+        <li><a href="https://www.geeksforgeeks.org/software-engineering/software-engineering-introduction-to-software-engineering/" target="_blank">GeeksforGeeks: Software Engineering Overview</a></li>
+        <li><a href="https://dev.to/dehemi_fabio/core-software-engineering-concepts-every-developer-must-know-4i5h" target="_blank">Core Software Engineering Concepts</a></li>
+        <li><a href="https://www.cs.hunter.cuny.edu/~sweiss/course_materials/csci235/lecture_notes/chapter_01.pdf" target="_blank">Hunter College Lecture Notes (PDF)</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+  <h2>System-Defined Functions in C++</h2>
+  <ul>
+    <li><b>&lt;iostream&gt;</b> – Input/Output:
+      <ul>
+        <li><code>std::cout</code> – Output to console</li>
+        <li><code>std::cin</code> – Input from console</li>
+        <li><code>std::cerr</code> – Error output</li>
+        <li><code>std::getline()</code> – Read entire line from input</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;string&gt;</b> – String Manipulation:
+      <ul>
+        <li><code>std::string::length()</code> – Get string length</li>
+        <li><code>std::string::substr()</code> – Extract substring</li>
+        <li><code>std::string::find()</code> – Find substring</li>
+        <li><code>std::string::replace()</code> – Replace part of string</li>
+        <li><code>std::stoi()</code>, <code>std::to_string()</code> – Convert between string and int</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;vector&gt;</b> – Dynamic Arrays:
+      <ul>
+        <li><code>std::vector::push_back()</code> – Add element</li>
+        <li><code>std::vector::size()</code> – Get size</li>
+        <li><code>std::vector::clear()</code> – Remove all elements</li>
+        <li><code>std::vector::at()</code> – Access element with bounds checking</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;algorithm&gt;</b> – Algorithms:
+      <ul>
+        <li><code>std::sort()</code> – Sort elements</li>
+        <li><code>std::reverse()</code> – Reverse elements</li>
+        <li><code>std::find()</code> – Find element</li>
+        <li><code>std::count()</code> – Count occurrences</li>
+        <li><code>std::max()</code>, <code>std::min()</code> – Get max/min</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;cmath&gt;</b> – Math Functions:
+      <ul>
+        <li><code>std::pow()</code>, <code>std::sqrt()</code> – Power and square root</li>
+        <li><code>std::abs()</code>, <code>std::ceil()</code>, <code>std::floor()</code> – Absolute and rounding</li>
+        <li><code>std::sin()</code>, <code>std::cos()</code>, <code>std::tan()</code> – Trigonometric functions</li>
+        <li><code>std::log()</code>, <code>std::exp()</code> – Logarithmic and exponential</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;map&gt;</b> – Key-Value Storage:
+      <ul>
+        <li><code>std::map::insert()</code> – Add key-value pair</li>
+        <li><code>std::map::find()</code> – Search for key</li>
+        <li><code>std::map::erase()</code> – Remove key</li>
+        <li><code>std::map::size()</code> – Get number of elements</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;set&gt;</b> – Unique Elements:
+      <ul>
+        <li><code>std::set::insert()</code> – Add element</li>
+        <li><code>std::set::find()</code> – Search for element</li>
+        <li><code>std::set::erase()</code> – Remove element</li>
+        <li><code>std::set::size()</code> – Get number of elements</li>
+      </ul>
+    </li>
+
+    <li><b>&lt;ctime&gt;</b> – Time Functions:
+      <ul>
+        <li><code>std::time()</code> – Get current time</li>
+        <li><code>std::difftime()</code> – Time difference</li>
+        <li><code>std::localtime()</code>, <code>std::strftime()</code> – Format time</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    <div class="footer">
+      © 2025 Code Quest | Empowering developers through clarity and communication
+    </div>
+  </div>
+</body>
+</html>
